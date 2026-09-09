@@ -578,6 +578,7 @@ function App() {
     const { data, error } = await supabase
       .from('transactions')
       .insert({
+       id: uid(), 
         type: 'income',
         amount: total,
         note: encodedNote,
@@ -659,6 +660,7 @@ function App() {
     setError('');
 
     const rows = draftItems.map((item, index) => ({
+      id: uid(), 
       type: 'expense' as const,
       amount: item.totalAmount,
       note: encodeNote(item.note, {
